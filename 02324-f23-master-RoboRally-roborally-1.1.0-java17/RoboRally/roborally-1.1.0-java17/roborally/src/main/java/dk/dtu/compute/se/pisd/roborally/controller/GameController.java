@@ -60,6 +60,7 @@ public class GameController {
      * The move counter of the board is also incremented.
      *
      * @param space The space to which the current player should be moved. This should be a free space.
+     * @author Aleksander Sonder
      */
     public void moveCurrentPlayerToSpace(@NotNull Space space) {
         Player currentPlayer = board.getCurrentPlayer();
