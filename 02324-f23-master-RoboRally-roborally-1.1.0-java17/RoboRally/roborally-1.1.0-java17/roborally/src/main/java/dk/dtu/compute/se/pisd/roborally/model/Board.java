@@ -202,17 +202,17 @@ public class Board extends Subject {
         return getSpace(x, y);
     }
 
-    public void incrementMoveCounter() {
-            moveCounter++;
-    }
-
     public int getMoveCounter() {
         return moveCounter;
     }
 
-    public void setMoveCounter(int i) {
+    public void incrementMoveCounter() {
+        moveCounter++;
     }
 
+    public void setMoveCounter(int i) {
+        moveCounter = i;
+    }
 
     public String getStatusMessage() {
         // This is actually a view aspect, but for making the first task easy for
