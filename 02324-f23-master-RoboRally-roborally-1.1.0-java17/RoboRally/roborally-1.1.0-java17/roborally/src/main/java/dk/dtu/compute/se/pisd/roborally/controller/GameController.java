@@ -25,10 +25,9 @@ import dk.dtu.compute.se.pisd.roborally.model.*;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * ...
- *
+ * The GameController class is responsible for controlling the game flow and executing player actions.
+ * It interacts with the Board and Player classes to manipulate the game state.
  * @author Ekkart Kindler, ekki@dtu.dk
- *
  */
 public class GameController {
 
@@ -38,20 +37,7 @@ public class GameController {
         this.board = board;
     }
 
-    /**
-     * This is just some dummy controller operation to make a simple move to see something
-     * happening on the board. This method should eventually be deleted!
-     *
-     * @param space the space to which the current player should move
-     */
 
-    // TODO Task1: method should be implemented by the students:
-    // (if it is free())
-    // - the current player should be moved to the given space
-    // - and the current player should be set to the player
-    // following the current player
-    // - the counter of moves in the game should be increased by one
-    // if the player is moved
 
     /**
      * Moves the current player to a specified space on the board.
@@ -73,7 +59,12 @@ public class GameController {
     }
 
 
-    // XXX: implemented in the current version
+    /**
+     * Starts the programming phase of the game.
+     * Sets the game phase to PROGRAMMING, sets the current player to the first player, and resets the step counter to 0.
+     * For each player, it clears their program fields and fills their card fields with random command cards.
+     * The program fields and card fields are made visible for the players.
+     */
     public void startProgrammingPhase() {
         board.setPhase(Phase.PROGRAMMING);
         board.setCurrentPlayer(board.getPlayer(0));
@@ -96,14 +87,23 @@ public class GameController {
         }
     }
 
-    // XXX: implemented in the current version
+    /**
+     * Generates a random CommandCard.
+     * It first gets all possible Command values, then selects a random one to create a new CommandCard.
+     *
+     * @return a new CommandCard with a random Command
+     */
     private CommandCard generateRandomCommandCard() {
         Command[] commands = Command.values();
         int random = (int) (Math.random() * commands.length);
         return new CommandCard(commands[random]);
     }
 
-    // XXX: implemented in the current version
+    /**
+     * Finishes the programming phase of the game.
+     * It makes all program fields invisible, then makes the first program field visible.
+     * Sets the game phase to ACTIVATION, sets the current player to the first player, and resets the step counter to 0.
+     */
     public void finishProgrammingPhase() {
         makeProgramFieldsInvisible();
         makeProgramFieldsVisible(0);
@@ -112,7 +112,13 @@ public class GameController {
         board.setStep(0);
     }
 
-    // XXX: implemented in the current version
+    /**
+     * Makes the program fields visible for a given register.
+     * If the register is within the valid range (0 to Player.NO_REGISTERS), it iterates over all players.
+     * For each player, it retrieves the CommandCardField for the given register and sets it to visible.
+     *
+     * @param register The register for which the program fields should be made visible.
+     */
     private void makeProgramFieldsVisible(int register) {
         if (register >= 0 && register < Player.NO_REGISTERS) {
             for (int i = 0; i < board.getPlayersNumber(); i++) {
@@ -123,7 +129,10 @@ public class GameController {
         }
     }
 
-    // XXX: implemented in the current version
+    /**
+     * Makes all program fields invisible for all players.
+     * It iterates over all players and for each player, it retrieves each CommandCardField in their program and sets it to invisible.
+     */
     private void makeProgramFieldsInvisible() {
         for (int i = 0; i < board.getPlayersNumber(); i++) {
             Player player = board.getPlayer(i);
@@ -134,26 +143,45 @@ public class GameController {
         }
     }
 
-    // XXX: implemented in the current version
+    /**
+     * Executes all programs for all players.
+     * It sets the step mode of the board to false, indicating that all steps should be executed at once.
+     * Then it calls the continuePrograms method to execute the programs.
+     */
     public void executePrograms() {
         board.setStepMode(false);
         continuePrograms();
     }
 
-    // XXX: implemented in the current version
+    /**
+     * Executes the next step for all players.
+     * It sets the step mode of the board to true, indicating that only one step should be executed.
+     * Then it calls the continuePrograms method to execute the step.
+     */
     public void executeStep() {
         board.setStepMode(true);
         continuePrograms();
     }
 
-    // XXX: implemented in the current version
+    /**
+     * Continues executing the programs for all players.
+     * It repeatedly calls the executeNextStep method as long as the game phase is ACTIVATION and the board is not in step mode.
+     */
     private void continuePrograms() {
         do {
             executeNextStep();
         } while (board.getPhase() == Phase.ACTIVATION && !board.isStepMode());
     }
 
-    // XXX: implemented in the current version
+    /**
+     * Executes the next step in the game.
+     * If the game phase is ACTIVATION and there is a current player, it retrieves the CommandCard from the current player's program at the current step.
+     * If the CommandCard is not null, it executes the command on the current player.
+     * Then it increments the player number to move to the next player.
+     * If there are no more players, it increments the step and sets the current player back to the first player.
+     * If there are no more steps, it starts the programming phase.
+     * If the game phase is not ACTIVATION or there is no current player, it throws an assertion error.
+     */
     private void executeNextStep() {
         Player currentPlayer = board.getCurrentPlayer();
         if (board.getPhase() == Phase.ACTIVATION && currentPlayer != null) {
@@ -187,7 +215,14 @@ public class GameController {
         }
     }
 
-    // XXX: implemented in the current version
+    /**
+     * Executes a given command for a specified player.
+     * If the player and command are not null and the player's board is the same as this controller's board, it executes the command.
+     * The command is executed based on its type: FORWARD, RIGHT, LEFT, FAST_FORWARD. For other command types, it does nothing.
+     *
+     * @param player The player for whom the command should be executed.
+     * @param command The command to be executed.
+     */
     private void executeCommand(@NotNull Player player, Command command) {
         if (player != null && player.board == board && command != null) {
             // XXX This is a very simplistic way of dealing with some basic cards and
@@ -233,6 +268,16 @@ public class GameController {
 
     }
 
+    /**
+     * Moves a CommandCard from a source CommandCardField to a target CommandCardField.
+     * If the source CommandCardField has a card and the target CommandCardField is empty, the card is moved.
+     * The card in the source CommandCardField is then set to null.
+     * If the move is successful, the method returns true. If the move is not successful (i.e., the source is empty or the target is not empty), it returns false.
+     *
+     * @param source The source CommandCardField from which the card should be moved.
+     * @param target The target CommandCardField to which the card should be moved.
+     * @return true if the move was successful, false otherwise.
+     */
     public boolean moveCards(@NotNull CommandCardField source, @NotNull CommandCardField target) {
         CommandCard sourceCard = source.getCard();
         CommandCard targetCard = target.getCard();
