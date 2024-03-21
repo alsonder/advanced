@@ -64,10 +64,10 @@ public class GameController {
     public void moveCurrentPlayerToSpace(@NotNull Space space) {
         Player currentPlayer = board.getCurrentPlayer();
         if (space.isFree()) {
+            board.incrementMoveCounter();
             currentPlayer.setSpace(space);
             int nextPlayerIndex = (board.getPlayerNumber(currentPlayer) + 1) % board.getPlayersNumber();
             board.setCurrentPlayer(board.getPlayer(nextPlayerIndex));
-            board.setMoveCounter(board.getMoveCounter() + 1);
         }
     }
 
