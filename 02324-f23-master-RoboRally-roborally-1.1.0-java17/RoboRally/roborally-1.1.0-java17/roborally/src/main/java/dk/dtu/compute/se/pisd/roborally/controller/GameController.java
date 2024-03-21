@@ -52,6 +52,15 @@ public class GameController {
     // following the current player
     // - the counter of moves in the game should be increased by one
     // if the player is moved
+
+    /**
+     * Moves the current player to a specified space on the board.
+     * If the space is free, the current player is moved to that space.
+     * The current player is then set to the next player in the list, or if there are no more players, it is set back to the first player.
+     * The move counter of the board is also incremented.
+     *
+     * @param space The space to which the current player should be moved. This should be a free space.
+     */
     public void moveCurrentPlayerToSpace(@NotNull Space space) {
         Player currentPlayer = board.getCurrentPlayer();
         if (space.isFree()) {
