@@ -160,7 +160,6 @@ public class GameController {
      */
     public void executeStep() {
         board.setStepMode(true);
-        board.incrementMoveCounter();
         continuePrograms();
     }
 
@@ -226,6 +225,7 @@ public class GameController {
      */
     private void executeCommand(@NotNull Player player, Command command) {
         if (player != null && player.board == board && command != null) {
+            board.incrementMoveCounter();
             // XXX This is a very simplistic way of dealing with some basic cards and
             //     their execution. This should eventually be done in a more elegant way
             //     (this concerns the way cards are modelled as well as the way they are executed).
