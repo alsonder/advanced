@@ -33,10 +33,11 @@ import javafx.scene.layout.VBox;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * ...
+ * This class represents the view of a player in the game. The player is
+ * displayed as a tab with the name of the player. The tab contains the
+ * program of the player and the cards of the player.
  *
- * @author Ekkart Kindler, ekki@dtu.dk
- *
+ * @see Player
  */
 public class PlayerView extends Tab implements ViewObserver {
 

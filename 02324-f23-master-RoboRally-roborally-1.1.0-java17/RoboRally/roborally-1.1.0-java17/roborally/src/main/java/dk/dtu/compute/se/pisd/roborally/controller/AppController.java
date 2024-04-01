@@ -41,10 +41,8 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * ...
- *
- * @author Ekkart Kindler, ekki@dtu.dk
- *
+ * The AppController class is responsible for controlling the flow of the application and communicating with the game controller.
+ * It implements the Observer interface to react to changes in the game state.
  */
 public class AppController implements Observer {
 
@@ -59,6 +57,14 @@ public class AppController implements Observer {
         this.roboRally = roboRally;
     }
 
+    /**
+     * Starts a new game.
+     * It asks the user to select the number of players, then creates a new game with that number of players.
+     * If a game is already running, it gives the user the option to save the game or quit the operation.
+     * It creates a new board and a new game controller, and adds the specified number of players to the board.
+     * Every player is assigned a space on the board.
+     * It then starts the programming phase of the game.
+     */
     public void newGame() {
         ChoiceDialog<Integer> dialog = new ChoiceDialog<>(PLAYER_NUMBER_OPTIONS.get(0), PLAYER_NUMBER_OPTIONS);
         dialog.setTitle("Player number");
@@ -93,9 +99,17 @@ public class AppController implements Observer {
         }
     }
 
+    /**
+     * Not implemented yet
+     */
+
     public void saveGame() {
         // XXX needs to be implemented eventually
     }
+
+    /**
+     * Not implemented yet
+     */
 
     public void loadGame() {
         // XXX needs to be implemented eventually
@@ -107,10 +121,7 @@ public class AppController implements Observer {
 
     /**
      * Stop playing the current game, giving the user the option to save
-     * the game or to cancel stopping the game. The method returns true
-     * if the game was successfully stopped (with or without saving the
-     * game); returns false, if the current game was not stopped. In case
-     * there is no current game, false is returned.
+     * the game or to cancel stopping the game.
      *
      * @return true if the current game was stopped, false otherwise
      */
@@ -127,6 +138,10 @@ public class AppController implements Observer {
         return false;
     }
 
+    /**
+     * Exit the application, giving the user the option to save the game
+     * before exiting.
+     */
     public void exit() {
         if (gameController != null) {
             Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -146,11 +161,20 @@ public class AppController implements Observer {
         }
     }
 
+    /**
+     * Get the game controller.
+     *
+     * @return the game controller
+     */
     public boolean isGameRunning() {
         return gameController != null;
     }
 
-
+    /**
+     * Update the observer.
+     *
+     * @param subject the subject that has changed
+     */
     @Override
     public void update(Subject subject) {
         // XXX do nothing for now

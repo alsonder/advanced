@@ -27,6 +27,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * The GameController class is responsible for controlling the game flow and executing player actions.
  * It interacts with the Board and Player classes to manipulate the game state.
+ *
  * @author Ekkart Kindler, ekki@dtu.dk
  */
 public class GameController {

@@ -26,10 +26,7 @@ import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import javafx.application.Platform;
 
 /**
- * ...
- *
- * @author Ekkart Kindler, ekki@dtu.dk
- *
+ * Interface for the observer of the view in the MVC pattern.
  */
 public interface ViewObserver extends Observer {
 

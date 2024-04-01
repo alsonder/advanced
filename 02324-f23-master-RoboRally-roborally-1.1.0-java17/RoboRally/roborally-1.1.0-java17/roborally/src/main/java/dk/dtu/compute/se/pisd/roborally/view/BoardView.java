@@ -35,10 +35,11 @@ import javafx.scene.layout.VBox;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * ...
+ * This class represents the view of the board of the game. The board is
+ * displayed as a grid of spaces.
  *
- * @author Ekkart Kindler, ekki@dtu.dk
- *
+ * @see Board
+ * @see SpaceView
  */
 public class BoardView extends VBox implements ViewObserver {
 
