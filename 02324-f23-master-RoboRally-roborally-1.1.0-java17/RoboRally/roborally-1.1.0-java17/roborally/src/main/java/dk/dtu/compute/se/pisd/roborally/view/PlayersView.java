@@ -28,11 +28,10 @@ import dk.dtu.compute.se.pisd.roborally.model.Player;
 import javafx.scene.control.TabPane;
 
 /**
- * ...
- *
- * @author Ekkart Kindler, ekki@dtu.dk
- *
+ * This class represents the view of the players in the game. It is a tab pane
+ * with a tab for each player in the game.
  */
+
 public class PlayersView extends TabPane implements ViewObserver {
 
     private Board board;

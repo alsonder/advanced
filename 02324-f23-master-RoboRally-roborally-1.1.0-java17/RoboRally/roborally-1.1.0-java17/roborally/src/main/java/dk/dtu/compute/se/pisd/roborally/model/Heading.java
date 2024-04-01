@@ -22,10 +22,7 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 /**
- * ...
- *
- * @author Ekkart Kindler, ekki@dtu.dk
- *
+ * Enumeration represents the different headings of a robot in the game of RoboRally.
  */
 public enum Heading {
 

@@ -26,10 +26,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * ...
- *
- * @author Ekkart Kindler, ekki@dtu.dk
- *
+ * This enumeration represents the different commands that can be issued to a
+ * robot in the game of RoboRally.
  */
 public enum Command {
 

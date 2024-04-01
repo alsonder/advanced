@@ -34,10 +34,10 @@ import javafx.scene.shape.StrokeLineCap;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * ...
- *
- * @author Ekkart Kindler, ekki@dtu.dk
- *
+ * This class represents the view of a space on the board of the game. A space
+ * is displayed as a square with a size of 60x60 pixels. The space can be
+ * occupied by a player, which is displayed as a triangle in the color of the
+ * player.
  */
 public class SpaceView extends StackPane implements ViewObserver {
 

@@ -27,10 +27,11 @@ import org.jetbrains.annotations.NotNull;
 import static dk.dtu.compute.se.pisd.roborally.model.Heading.SOUTH;
 
 /**
- * ...
- *
- * @author Ekkart Kindler, ekki@dtu.dk
- *
+ * This class represents a player in the game. A player has a name,
+ * a color, a position on the board, a heading, a program, and a set of cards.
+ * The program is the sequence of commands that the player has selected for the
+ * next turn, and the cards are the set of cards that the player can select
+ * commands from.
  */
 public class Player extends Subject {
 

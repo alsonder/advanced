@@ -30,10 +30,8 @@ import java.util.List;
 import static dk.dtu.compute.se.pisd.roborally.model.Phase.INITIALISATION;
 
 /**
- * ...
- *
- * @author Ekkart Kindler, ekki@dtu.dk
- *
+ * Enumeration represents the different commands that can be given to a
+ robot in the game.
  */
 public class Board extends Subject {
 

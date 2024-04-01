@@ -24,10 +24,15 @@ package dk.dtu.compute.se.pisd.roborally.model;
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 
 /**
- * ...
+ * This class represents a field for a command card that can be used by a player in the game.
+ * The command card is associated with a specific command that can be executed by
+ * a robot in the game.
  *
- * @author Ekkart Kindler, ekki@dtu.dk
+ * The field is associated with a player and can be visible or not.
  *
+ * @see CommandCard
+ * @see Player
+ * @see Subject
  */
 public class CommandCardField extends Subject {
 

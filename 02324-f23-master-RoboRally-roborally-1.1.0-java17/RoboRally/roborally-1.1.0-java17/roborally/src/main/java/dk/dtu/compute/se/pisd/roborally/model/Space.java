@@ -24,10 +24,12 @@ package dk.dtu.compute.se.pisd.roborally.model;
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 
 /**
- * ...
+ * This class represents a space on the board of the game. A space can be
+ * occupied by a player.
  *
- * @author Ekkart Kindler, ekki@dtu.dk
- *
+ * @see Board
+ * @see Player
+ * @see Subject
  */
 public class Space extends Subject {
 
