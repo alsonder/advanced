@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/advanced.iml" filepath="$PROJECT_DIR$/.idea/advanced.iml" />
-      <module fileurl="file://$PROJECT_DIR$/02324-f23-master-RoboRally-roborally-1.1.0-java17/RoboRally/roborally-1.1.0-java17/roborally/roborally.iml" filepath="$PROJECT_DIR$/02324-f23-master-RoboRally-roborally-1.1.0-java17/RoboRally/roborally-1.1.0-java17/roborally/roborally.iml" />
     </modules>
   </component>
 </project>

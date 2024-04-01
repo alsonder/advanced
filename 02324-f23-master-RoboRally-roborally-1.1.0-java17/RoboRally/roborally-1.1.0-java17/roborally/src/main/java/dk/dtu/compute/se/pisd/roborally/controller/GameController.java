@@ -48,7 +48,7 @@ public class GameController {
      * @param space The space to which the current player should be moved. This should be a free space.
      * @author Aleksander Sonder
      */
-    public void moveCurrentPlayerToSpace(@NotNull Space space) {
+    public void moveCurrentPlayerToSpace(@NotNull Space space, @NotNull Heading heading) {
         Player currentPlayer = board.getCurrentPlayer();
         if (space.isFree()) {
             board.incrementMoveCounter();
@@ -232,7 +232,7 @@ public class GameController {
 
             switch (command) {
                 case FORWARD:
-                    this.moveForward(player);
+                    this.moveForward(player, player.getHeading());
                     break;
                 case RIGHT:
                     this.turnRight(player);
@@ -250,8 +250,10 @@ public class GameController {
     }
 
     // TODO Task2
-    public void moveForward(@NotNull Player player) {
-
+    public void moveForward(@NotNull Player player, Heading heading) {
+        Space source = player.getSpace();
+        Space destination = board.getNeighbour(source, heading);
+        moveCurrentPlayerToSpace(destination, heading);
     }
 
     // TODO Task2
