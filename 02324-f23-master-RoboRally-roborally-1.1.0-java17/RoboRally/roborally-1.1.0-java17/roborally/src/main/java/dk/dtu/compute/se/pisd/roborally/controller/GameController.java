@@ -249,7 +249,13 @@ public class GameController {
         }
     }
 
-    // TODO Task2
+    /**
+     * Moves the player 1 tile forward, by taking the player and heading as argument
+     *
+     * @param player, The player who the command will be executed on
+     * @param heading, the current heading of the player
+     */
+
     public void moveForward(@NotNull Player player, Heading heading) {
         Space source = player.getSpace();
         Space destination = board.getNeighbour(source, heading);
@@ -258,17 +264,44 @@ public class GameController {
 
     // TODO Task2
     public void fastForward(@NotNull Player player) {
-
     }
 
-    // TODO Task2
+    /**
+     * Turns the player heading right
+     * @param player The player who uses the turn right command
+     */
     public void turnRight(@NotNull Player player) {
-
+        Heading heading = player.getHeading();
+        if(heading == Heading.SOUTH){
+            player.setHeading(Heading.WEST);
+        } else if (heading == Heading.EAST) {
+            player.setHeading(Heading.SOUTH);
+        }
+        else if (heading == Heading.NORTH) {
+            player.setHeading(Heading.EAST);
+        }
+        else if (heading == Heading.WEST) {
+            player.setHeading(Heading.NORTH);
+        }
     }
 
-    // TODO Task2
+    /**
+     * Turns the player heading left
+     *
+     * @param player The player who uses the turn left command
+     */
     public void turnLeft(@NotNull Player player) {
-
+        Heading heading = player.getHeading();
+        if(heading == Heading.SOUTH){
+            player.setHeading(Heading.EAST);
+        } else if (heading == Heading.EAST) {
+            player.setHeading(Heading.NORTH);
+        }
+        else if (heading == Heading.NORTH) {
+            player.setHeading(Heading.WEST);
+        } else if (heading == Heading.WEST) {
+            player.setHeading(Heading.SOUTH);
+        }
     }
 
     /**
